@@ -1,0 +1,28 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+inp   VAR     Nib
+counter VAR Word
+loopV VAR Word
+
+DO WHILE (loopV = "true")
+  DEBUG CLS, "1 = Go Foward, 2 = GO BACKWARD"
+  DEBUGIN DEC1 inp
+  IF (inp = 1) THEN
+    FOR counter = 1 TO 61
+      PULSOUT 14, 850
+      PULSOUT 15, 650
+      PAUSE 20
+      NEXT
+  ELSEIF (inp = 2) THEN
+    FOR counter = 1 TO 61
+      PULSOUT 14, 650
+      PULSOUT 15, 850
+      PAUSE 20
+      NEXT
+  ELSE
+    DEBUG CLS, "Sorry, no command"
+  ENDIF
+  DEBUG CLS, "CONTINUE, true OR false"
+  DEBUGIN Word loopV
+LOOP
+END

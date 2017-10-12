@@ -1,0 +1,13 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+DEBUG "Program Running!"
+counter VAR Word   'Variable declared for
+
+
+FOR counter = 1 TO 61 ' Run servos for 3 seconds, sends 61 pulses
+'Pulsout value of 750 is the still value, if its more it goes counterclockwise, if its less it goes clockwise
+ PULSOUT 14, 850   ' causes the left servo to rotate counterclockwise
+ PULSOUT 15, 650    'causes the right servo to rotate clockwise
+ PAUSE 20
+NEXT
+END
