@@ -42,7 +42,7 @@ while not joy.Back():
     if ljoy > 0:
         if flag:
             GPIO.output(Motor1A,GPIO.HIGH)
-            GPIO.output(Motor2A,GPIO.HIGH)
+            GPIO.output(Motor1B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm1.start(0)
             flag = 0;
