@@ -31,8 +31,8 @@ rjoy = 0
 print "Xbox controller sample: Press Back button to exit"
 # Loop until back button is pressed
 while not joy.Back():
-    ljoy = joy.leftY()
-    rjoy = joy.rightY()
+    ljoy = round(joy.leftY(),2)
+    rjoy = round(joy.rightY(),2)
     # Show connection status
     if joy.connected():
         print "Connected   ",
@@ -46,8 +46,7 @@ while not joy.Back():
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm1.start(0)
             flag = 0;
-        if ljoy:
-            pwm1.ChangeDutyCycle(abs(ljoy * 100))
+        pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
             flag = 1
@@ -55,8 +54,7 @@ while not joy.Back():
             GPIO.output(Motor1B,GPIO.HIGH)
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm1.start(0)
-        if ljoy:
-            pwm1.ChangeDutyCycle(abs(ljoy * 100))
+        pwm1.ChangeDutyCycle(abs(ljoy * 100))
     # Left analog stick
     print "Ly ",ljoy,
 
