@@ -27,12 +27,8 @@ while(key != "q"):
             print "Forward"
             GPIO.output(Motor1A,GPIO.HIGH)
             GPIO.output(Motor1B,GPIO.LOW)
-            GPIO.output(Motor2A,GPIO.HIGH)
-            GPIO.output(Motor2B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
-            pwm2 = GPIO.PWM(Motor2E,1000)
             pwm1.start(90)
-            pwm2.start(90)
 
             key = raw_input()
         elif(key == "s"):
