@@ -39,6 +39,8 @@ while not joy.Back():
 
     ljoy = joy.leftY()
     rjoy = joy.rightY()
+    time.sleep(0.1)
+
     #Left Motor , motor number 1
     if ljoy > 0:
         if flag:
