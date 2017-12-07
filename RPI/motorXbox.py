@@ -1,4 +1,22 @@
 import xbox #wget https://raw.githubusercontent.com/FRC4564/Xbox/master/xbox.py
+import RPi.GPIO as GPIO
+#from time import sleep
+
+GPIO.setmode(GPIO.BCM)
+
+Motor1A = 23
+Motor1B = 24
+Motor1E = 12
+Motor2A = 17
+Motor2B = 27
+Motor2E = 13
+
+GPIO.setup(Motor1E,GPIO.OUT)
+GPIO.setup(Motor2E,GPIO.OUT)
+GPIO.setup(Motor1A,GPIO.OUT)
+GPIO.setup(Motor1B,GPIO.OUT)
+GPIO.setup(Motor2A,GPIO.OUT)
+GPIO.setup(Motor2B,GPIO.OUT)
 
 # Format floating point number to string format -x.xxx
 def fmtFloat(n):
@@ -16,52 +34,71 @@ while not joy.Back():
         print "Disconnected",
 
     # Left analog stick
-    print "Lx,Ly ",fmtFloat(joy.leftX()),fmtFloat(joy.leftY()),
+    print "Ly ",fmtFloat(joy.leftY()),
     # Right analog stick
-    print "Rx,Ry ",fmtFloat(joy.rightX()),fmtFloat(joy.rightY()),
-    # Right trigger
-    print "rightTrigger ",fmtFloat(joy.rightTrigger()),
-    # Right trigger
-    print "leftTrigger ",fmtFloat(joy.leftTrigger()),
-
-    # A/B/X/Y buttons
-    print "Buttons ",
-    if joy.A():
-        print "A",
-    else:
-        print " ",
-    if joy.B():
-        print "B",
-    else:
-        print " ",
-    if joy.X():
-        print "X",
-    else:
-        print " ",
-    if joy.Y():
-        print "Y",
-    else:
-        print " ",
-    # Dpad U/D/L/R
-    print "Dpad ",
-    if joy.dpadUp():
-        print "U",
-    else:
-        print " ",
-    if joy.dpadDown():
-        print "D",
-    else:
-        print " ",
-    if joy.dpadLeft():
-        print "L",
-    else:
-        print " ",
-    if joy.dpadRight():
-        print "R",
-    else:
-        print " ",
+    print "Ry ",fmtFloat(joy.rightY()),
 
     # Move cursor back to start of line
     print chr(13),
+
+print "Stopping motor"
+
+GPIO.output(Motor1B,GPIO.LOW)
+GPIO.output(Motor1A,GPIO.LOW)
+GPIO.output(Motor2B,GPIO.LOW)
+GPIO.output(Motor2A,GPIO.LOW)
+
+GPIO.cleanup()
+
 # Close out when done
 joy.close()
+
+
+
+
+
+
+
+#
+#
+# while(key != "q"):
+#         if(key == "w"):
+#             print "Forward"
+#             GPIO.output(Motor1A,GPIO.HIGH)
+#             GPIO.output(Motor1B,GPIO.LOW)
+#             GPIO.output(Motor2A,GPIO.HIGH)
+#             GPIO.output(Motor2B,GPIO.LOW)
+#             pwm1 = GPIO.PWM(Motor1E,1000)
+#             pwm2 = GPIO.PWM(Motor2E,1000)
+#             //pwm1.start(90)
+#             //pwm2.start(30)
+#             key = raw_input()
+#         elif(key == "s"):
+#                 print "Backward"
+#                 GPIO.output(Motor1B,GPIO.HIGH)
+#                 GPIO.output(Motor1A,GPIO.LOW)
+#                 GPIO.output(Motor2B,GPIO.HIGH)
+#                 GPIO.output(Motor2A,GPIO.LOW)
+#                 key = raw_input()
+#         elif(key == "d"):
+#                 print "Right"
+#                 GPIO.output(Motor1B,GPIO.HIGH)
+#                 GPIO.output(Motor1A,GPIO.LOW)
+#                 GPIO.output(Motor2B,GPIO.LOW)
+#                 GPIO.output(Motor2A,GPIO.HIGH)
+#                 key = raw_input()
+#         elif(key == "a"):
+#                 print "Left"
+#                 GPIO.output(Motor1B,GPIO.LOW)
+#                 GPIO.output(Motor1A,GPIO.HIGH)
+#                 GPIO.output(Motor2B,GPIO.HIGH)
+#                 GPIO.output(Motor2A,GPIO.LOW)
+#                 key = raw_input()
+#         elif(key == "e"):
+#                 GPIO.output(Motor1B,GPIO.LOW)
+#                 GPIO.output(Motor1A,GPIO.LOW)
+#                 GPIO.output(Motor2B,GPIO.LOW)
+#                 GPIO.output(Motor2A,GPIO.LOW)
+#                 key = raw_input()
+#         else:
+#                 key = raw_input()
