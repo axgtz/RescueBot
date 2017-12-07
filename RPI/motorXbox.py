@@ -18,6 +18,9 @@ GPIO.setup(Motor1B,GPIO.OUT)
 GPIO.setup(Motor2A,GPIO.OUT)
 GPIO.setup(Motor2B,GPIO.OUT)
 
+pwm1 = GPIO.PWM(Motor1E,1000)
+pwm1.start(0)
+
 # Format floating point number to string format -x.xxx
 def fmtFloat(n):
     return '{:6.3f}'.format(n)
@@ -44,16 +47,12 @@ while not joy.Back():
             flag = 0
             GPIO.output(Motor1A,GPIO.HIGH)
             GPIO.output(Motor1B,GPIO.LOW)
-            pwm1 = GPIO.PWM(Motor1E,1000)
-            pwm1.start(10)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
             flag = 1
             GPIO.output(Motor1B,GPIO.HIGH)
             GPIO.output(Motor1A,GPIO.LOW)
-            pwm1 = GPIO.PWM(Motor1E,1000)
-            pwm1.start(10)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     # Left analog stick
     print "Ly ",ljoy,
@@ -68,6 +67,8 @@ while not joy.Back():
     print chr(13),
 
 print "Stopping motor"
+
+pwm1.stop()
 
 GPIO.output(Motor1B,GPIO.LOW)
 GPIO.output(Motor1A,GPIO.LOW)
