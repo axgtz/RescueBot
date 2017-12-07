@@ -56,7 +56,7 @@ while not joy.Back():
             pwm1.start(0)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     # Left analog stick
-    print "Ly ",ljoy, "  -  "
+    print "Ly ",ljoy, "  -  ",
 
     #Right Motor , motor number 2
 
