@@ -31,8 +31,8 @@ rjoy = 0
 print "Xbox controller sample: Press Back button to exit"
 # Loop until back button is pressed
 while not joy.Back():
-    ljoy = fmtFloat(joy.leftY())
-    rjoy = fmtFloat(joy.rightY())
+    ljoy = joy.leftY()
+    rjoy = joy.rightY()
     # Show connection status
     if joy.connected():
         print "Connected   ",
@@ -80,13 +80,6 @@ GPIO.cleanup()
 joy.close()
 
 
-
-
-
-
-#
-#
-#
 # while(key != "q"):
 #         if(key == "w"):
 #             print "Forward"
