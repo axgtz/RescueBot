@@ -11,8 +11,6 @@ Motor2A = 17
 Motor2B = 27
 Motor2E = 13
 
-GPIO.cleanup()
-
 GPIO.setup(Motor1E,GPIO.OUT)
 GPIO.setup(Motor2E,GPIO.OUT)
 GPIO.setup(Motor1A,GPIO.OUT)
@@ -47,7 +45,7 @@ while not joy.Back():
             GPIO.output(Motor1A,GPIO.HIGH)
             GPIO.output(Motor1B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
-            pwm1.start(0)
+            pwm1.start(10)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
@@ -55,7 +53,7 @@ while not joy.Back():
             GPIO.output(Motor1B,GPIO.HIGH)
             GPIO.output(Motor1A,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
-            pwm1.start(0)
+            pwm1.start(10)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     # Left analog stick
     print "Ly ",ljoy,
