@@ -3,7 +3,7 @@ import xbox
 # Format floating point number to string format -x.xxx
 def fmtFloat(n):
     return '{:6.3f}'.format(n)
-    
+
 joy = xbox.Joystick()
 
 print "Xbox controller sample: Press Back button to exit"
@@ -54,7 +54,7 @@ while not joy.Back():
         print "R",
     else:
         print " ",
-        
+
     # Move cursor back to start of line
     print chr(13),
 # Close out when done
