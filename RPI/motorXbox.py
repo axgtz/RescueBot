@@ -27,10 +27,6 @@ joy = xbox.Joystick()
 flag = 1
 ljoy = 0
 rjoy = 0
-pwm1 = GPIO.PWM(Motor1E,1000)
-GPIO.output(Motor1A,GPIO.HIGH)
-GPIO.output(Motor1B,GPIO.LOW)
-pwm1.start(0)
 
 print "Xbox controller sample: Press Back button to exit"
 # Loop until back button is pressed
@@ -44,8 +40,10 @@ while not joy.Back():
         print "Disconnected",
     #Left Motor , motor number 1
     if ljoy > 0:
-        if flag:
-            flag = 0
+        GPIO.output(Motor1A,GPIO.HIGH)
+        GPIO.output(Motor1B,GPIO.LOW)
+        pwm1 = GPIO.PWM(Motor1E,1000)
+        pwm1.start(90)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
