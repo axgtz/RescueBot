@@ -32,7 +32,7 @@ print "Xbox controller sample: Press Back button to exit"
 # Loop until back button is pressed
 while not joy.Back():
     ljoy = joy.leftY()
-    rjoy = joy.rightY()
+    rjoy = joy.rightX()
     # Show connection status
     if joy.connected():
         print "Connected   ",
