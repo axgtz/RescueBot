@@ -1,4 +1,4 @@
-import xbox
+import xbox #wget https://raw.githubusercontent.com/FRC4564/Xbox/master/xbox.py
 
 # Format floating point number to string format -x.xxx
 def fmtFloat(n):
@@ -14,10 +14,16 @@ while not joy.Back():
         print "Connected   ",
     else:
         print "Disconnected",
+
     # Left analog stick
     print "Lx,Ly ",fmtFloat(joy.leftX()),fmtFloat(joy.leftY()),
+    # Right analog stick
+    print "Rx,Ry ",fmtFloat(joy.rightX()),fmtFloat(joy.rightY()),
     # Right trigger
-    print "Rtrg ",fmtFloat(joy.rightTrigger()),
+    print "rightTrigger ",fmtFloat(joy.rightTrigger()),
+    # Right trigger
+    print "leftTrigger ",fmtFloat(joy.leftTrigger()),
+
     # A/B/X/Y buttons
     print "Buttons ",
     if joy.A():
