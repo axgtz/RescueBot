@@ -32,7 +32,6 @@ while(key != "q"):
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm2 = GPIO.PWM(Motor2E,1000)
             pwm1.start(90)
-            pwm2.start(30)
             key = raw_input()
         elif(key == "s"):
                 print "Backward"
