@@ -45,7 +45,7 @@ while not joy.Back():
             GPIO.output(Motor1A,GPIO.HIGH)
             GPIO.output(Motor1B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
-            pwm1.start(100)
+        print ljoy    
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
