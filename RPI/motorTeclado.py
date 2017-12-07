@@ -1,15 +1,15 @@
 import RPi.GPIO as GPIO
 from time import sleep
- 
+
 GPIO.setmode(GPIO.BCM)
- 
+
 Motor1A = 23
 Motor1B = 24
 Motor1E = 12
 Motor2A = 17
 Motor2B = 27
 Motor2E = 13
- 
+
 GPIO.setup(Motor1E,GPIO.OUT)
 GPIO.setup(Motor2E,GPIO.OUT)
 GPIO.setup(Motor1A,GPIO.OUT)
@@ -31,8 +31,8 @@ while(key != "q"):
             GPIO.output(Motor2B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm2 = GPIO.PWM(Motor2E,1000)
-            //pwm1.start(90)
-            //pwm2.start(30)
+            pwm1.start(90)
+            pwm2.start(30)
             key = raw_input()
         elif(key == "s"):
                 print "Backward"
