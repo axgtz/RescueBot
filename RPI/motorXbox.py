@@ -62,6 +62,6 @@ while not joy.Back():
         print " ",
 
     # Move cursor back to start of line
-    print chr(13),
+    print chr(50),
 # Close out when done
 joy.close()
