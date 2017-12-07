@@ -17,6 +17,7 @@ GPIO.setup(Motor1A,GPIO.OUT)
 GPIO.setup(Motor1B,GPIO.OUT)
 GPIO.setup(Motor2A,GPIO.OUT)
 GPIO.setup(Motor2B,GPIO.OUT)
+GPIO.cleanup()
 
 # Format floating point number to string format -x.xxx
 def fmtFloat(n):
@@ -31,13 +32,14 @@ rjoy = 0
 print "Xbox controller sample: Press Back button to exit"
 # Loop until back button is pressed
 while not joy.Back():
-    ljoy = joy.leftY()
-    rjoy = joy.rightY()
     # Show connection status
     if joy.connected():
         print "Connected   ",
     else:
         print "Disconnected",
+
+    ljoy = joy.leftY()
+    rjoy = joy.rightY()
     #Left Motor , motor number 1
     if ljoy > 0:
         if flag:
@@ -45,7 +47,6 @@ while not joy.Back():
             GPIO.output(Motor1A,GPIO.HIGH)
             GPIO.output(Motor1B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
-        print ljoy    
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
@@ -54,10 +55,9 @@ while not joy.Back():
             GPIO.output(Motor1B,GPIO.HIGH)
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm1.start(0)
-            print 'changed=================================================================================='
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     # Left analog stick
-    print "Ly ",ljoy,
+    print "Ly ",ljoy, "  -  "
 
     #Right Motor , motor number 2
 
