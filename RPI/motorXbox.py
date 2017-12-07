@@ -40,10 +40,12 @@ while not joy.Back():
         print "Disconnected",
     #Left Motor , motor number 1
     if ljoy > 0:
-        GPIO.output(Motor1A,GPIO.HIGH)
-        GPIO.output(Motor1B,GPIO.LOW)
-        pwm1 = GPIO.PWM(Motor1E,1000)
-        pwm1.start(90)
+        if flag:
+            GPIO.output(Motor1A,GPIO.HIGH)
+            GPIO.output(Motor1B,GPIO.LOW)
+            pwm1 = GPIO.PWM(Motor1E,1000)
+            pwm1.start(90)
+            flag = 0;
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
