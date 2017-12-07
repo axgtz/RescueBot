@@ -17,7 +17,6 @@ GPIO.setup(Motor1A,GPIO.OUT)
 GPIO.setup(Motor1B,GPIO.OUT)
 GPIO.setup(Motor2A,GPIO.OUT)
 GPIO.setup(Motor2B,GPIO.OUT)
-GPIO.cleanup()
 
 # Format floating point number to string format -x.xxx
 def fmtFloat(n):
