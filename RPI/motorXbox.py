@@ -50,14 +50,16 @@ while not joy.Back():
             pwm1.start(100)
             #pwm2.start(100)
             flag = 0;
-        pwm1.ChangeDutyCycle(abs(ljoy * 100))
+        if ljoy:
+            pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
         if not flag:
             flag = 1
             GPIO.output(Motor1A,GPIO.LOW)
             GPIO.output(Motor1B,GPIO.HIGH)
             pwm1.start(100)
-        pwm1.ChangeDutyCycle(abs(ljoy * 100))
+        if ljoy:
+            pwm1.ChangeDutyCycle(abs(ljoy * 100))
     # Left analog stick
     print "Ly ",ljoy,
 
