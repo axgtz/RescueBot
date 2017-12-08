@@ -6,10 +6,10 @@ GPIO.setmode(GPIO.BCM)
 
 Motor1A = 23
 Motor1B = 24
-Motor1E = 12
+Motor1E = 13
 Motor2A = 17
 Motor2B = 27
-Motor2E = 13
+Motor2E = 12
 
 GPIO.setup(Motor1E,GPIO.OUT)
 GPIO.setup(Motor2E,GPIO.OUT)
@@ -42,13 +42,9 @@ while not joy.Back():
     if ljoy > 0:
         if flag:
             GPIO.output(Motor1A,GPIO.HIGH)
-            #GPIO.output(Motor1B,GPIO.LOW)
             GPIO.output(Motor2A,GPIO.HIGH)
-            #GPIO.output(Motor2B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
-            #pwm2 = GPIO.PWM(Motor2E,1000)
-            pwm1.start(100)
-            #pwm2.start(100)
+            pwm1.start(0)
             flag = 0;
         if ljoy:
             pwm1.ChangeDutyCycle(abs(ljoy * 100))
@@ -57,7 +53,7 @@ while not joy.Back():
             flag = 1
             GPIO.output(Motor1A,GPIO.LOW)
             GPIO.output(Motor1B,GPIO.HIGH)
-            pwm1.start(100)
+            pwm1.start(0)
         if ljoy:
             pwm1.ChangeDutyCycle(abs(ljoy * 100))
     # Left analog stick
