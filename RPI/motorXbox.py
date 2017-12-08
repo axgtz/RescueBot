@@ -55,6 +55,8 @@ while not joy.Back():
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm1.start(0)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
+    elif ljoy == 0:
+        pwm1.stop()
     # Left analog stick
     print "Ly ",ljoy,
 
