@@ -24,7 +24,8 @@ def fmtFloat(n):
 
 joy = xbox.Joystick()
 
-flag = 1
+flag1 = 1
+flag2 = 1
 ljoy = 0
 rjoy = 0
 
@@ -40,16 +41,16 @@ while not joy.Back():
         print "Disconnected",
     #Left Motor , motor number 1
     if ljoy > 0:
-        if flag:
+        if flag1:
             GPIO.output(Motor1A,GPIO.HIGH)
             GPIO.output(Motor1B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm1.start(0)
-            flag = 0;
+            flag1 = 0;
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
-        if not flag:
-            flag = 1
+        if not flag1:
+            flag1 = 1
             GPIO.output(Motor1A,GPIO.LOW)
             GPIO.output(Motor1B,GPIO.HIGH)
             pwm1 = GPIO.PWM(Motor1E,1000)
@@ -63,16 +64,16 @@ while not joy.Back():
 
     #Right Motor , motor number 2
     if rjoy > 0:
-        if flag:
+        if flag2:
             GPIO.output(Motor2A,GPIO.HIGH)
             GPIO.output(Motor2B,GPIO.LOW)
             pwm2 = GPIO.PWM(Motor2E,1000)
             pwm2.start(0)
-            flag = 0;
+            flag2 = 0;
         pwm2.ChangeDutyCycle(abs(ljoy * 100))
     elif rjoy < 0:
-        if not flag:
-            flag = 1
+        if not flag2:
+            flag2 = 1
             GPIO.output(Motor2A,GPIO.LOW)
             GPIO.output(Motor2B,GPIO.HIGH)
             pwm2 = GPIO.PWM(Motor2E,1000)
