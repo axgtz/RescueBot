@@ -55,14 +55,32 @@ while not joy.Back():
             pwm1 = GPIO.PWM(Motor1E,1000)
             pwm1.start(0)
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
-    elif ljoy == 0:
+    elif ljoy == 0:#Aqui se traba y luego no avanza pero evita que se quede trabado
         pwm1 = GPIO.PWM(Motor1E,1000)
         pwm1.stop()
     # Left analog stick
     print "Ly ",ljoy,
 
     #Right Motor , motor number 2
-
+    if rjoy > 0:
+        if flag:
+            GPIO.output(Motor2A,GPIO.HIGH)
+            GPIO.output(Motor2B,GPIO.LOW)
+            pwm2 = GPIO.PWM(Motor2E,1000)
+            pwm2.start(0)
+            flag = 0;
+        pwm2.ChangeDutyCycle(abs(ljoy * 100))
+    elif rjoy < 0:
+        if not flag:
+            flag = 1
+            GPIO.output(Motor2A,GPIO.LOW)
+            GPIO.output(Motor2B,GPIO.HIGH)
+            pwm2 = GPIO.PWM(Motor2E,1000)
+            pwm2.start(0)
+        pwm2.ChangeDutyCycle(abs(ljoy * 100))
+    elif rjoy == 0:#Aqui se traba y luego no avanza pero evita que se quede trabado
+        pwm2 = GPIO.PWM(Motor2E,1000)
+        pwm2.stop()
 
     # Right analog stick
     print "Ry ",rjoy,
