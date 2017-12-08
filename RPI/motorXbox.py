@@ -70,7 +70,7 @@ while not joy.Back():
             pwm2 = GPIO.PWM(Motor2E,1000)
             pwm2.start(0)
             flag2 = 0;
-        pwm2.ChangeDutyCycle(abs(ljoy * 100))
+        pwm2.ChangeDutyCycle(abs(rjoy * 100))
     elif rjoy < 0:
         if not flag2:
             flag2 = 1
@@ -78,7 +78,7 @@ while not joy.Back():
             GPIO.output(Motor2B,GPIO.HIGH)
             pwm2 = GPIO.PWM(Motor2E,1000)
             pwm2.start(0)
-        pwm2.ChangeDutyCycle(abs(ljoy * 100))
+        pwm2.ChangeDutyCycle(abs(rjoy * 100))
     elif rjoy == 0:#Aqui se traba y luego no avanza pero evita que se quede trabado
         pwm2 = GPIO.PWM(Motor2E,1000)
         pwm2.stop()
