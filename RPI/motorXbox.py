@@ -22,8 +22,6 @@ GPIO.setup(Motor2B,GPIO.OUT)
 def fmtFloat(n):
     return '{:6.3f}'.format(n)
 
-pwm1
-
 joy = xbox.Joystick()
 
 flag = 1
