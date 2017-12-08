@@ -42,9 +42,13 @@ while not joy.Back():
     if ljoy > 0:
         if flag:
             GPIO.output(Motor1A,GPIO.HIGH)
-            GPIO.output(Motor1B,GPIO.LOW)
+            #GPIO.output(Motor1B,GPIO.LOW)
+            GPIO.output(Motor2A,GPIO.HIGH)
+            #GPIO.output(Motor2B,GPIO.LOW)
             pwm1 = GPIO.PWM(Motor1E,1000)
+            #pwm2 = GPIO.PWM(Motor2E,1000)
             pwm1.start(100)
+            #pwm2.start(100)
             flag = 0;
         pwm1.ChangeDutyCycle(abs(ljoy * 100))
     elif ljoy < 0:
@@ -62,6 +66,8 @@ while not joy.Back():
 
     # Right analog stick
     print "Ry ",rjoy,
+
+    # Move cursor back to start of line
 
     # Move cursor back to start of line
     print chr(13),
